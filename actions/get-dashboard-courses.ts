@@ -9,7 +9,7 @@ type CourseWithProgressWithCategory = Course & {
 };
 
 type DashboardCourses = {
-  completedCourse: CourseWithProgressWithCategory[];
+  completedCourses: CourseWithProgressWithCategory[];
   coursesInProgress: CourseWithProgressWithCategory[];
 };
 
@@ -44,21 +44,19 @@ export const getDashboardCourses = async (
       course["progress"] = progress;
     }
 
-    const completedCourses = courses.filter(
-      (course) => course.progress === 100
-    );
+    const ss = courses.filter((course) => course.progress === 100);
     const coursesInProgress = courses.filter(
       (course) => (course.progress ?? 0) < 100
     );
 
     return {
-      completedCourses,
+      ss,
       coursesInProgress,
     };
   } catch (error) {
     console.log("[GET_DASHBOARD_COURSES", error);
     return {
-      completedCourses: [],
+      ss: [],
       coursesInProgress: [],
     };
   }
