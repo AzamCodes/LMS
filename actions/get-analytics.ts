@@ -21,27 +21,29 @@ const groupByCourse = (purchase: PurchaseWithCourse[]) => {
 
 export const getAnalytics = async (userId: string) => {
   try {
-    const purchases = await db.purchase
-      .findMany({
-        where: {
-          course: {
-            userId: userId,
-          },
+    const purchases = await db.purchase.findMany({
+      where: {
+        course: {
+          userId: userId,
         },
-        include: {
-          course: true,
-        },
-      })
-      .then((purchases) => purchases.filter((p) => p.course !== null));
+      },
+      include: {
+        course: true,
+      },
+    });
 
-    const groupedEarning = groupByCourse(purchases);
+    const validPurchases: PurchaseWithCourse[] = purchases.filter(
+      (p): p is PurchaseWithCourse => p.course !== null
+    );
+
+    const groupedEarning = groupByCourse(validPurchases);
     const data = Object.entries(groupedEarning).map(([courseTitle, total]) => ({
       name: courseTitle,
       total: total,
     }));
 
     const totalRevenue = data.reduce((acc, curr) => acc + curr.total, 0);
-    const totalSales = purchases.length;
+    const totalSales = validPurchases.length;
 
     return {
       data,
