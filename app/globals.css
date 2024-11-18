@@ -1,0 +1,135 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* html,
+body :root {
+  height: 100%;
+} */
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+.ql-container {
+  font-size: 16px !important;
+}
+
+@import "~@uploadthing/react/styles.css";
+@keyframes smooth-rotate {
+  0% {
+    transform: rotate(0deg) scale(1); /* Start at original size */
+  }
+  25% {
+    transform: rotate(15deg) scale(1.05); /* Rotate slightly to the right and scale up */
+  }
+  50% {
+    transform: rotate(-15deg) scale(0.95); /* Rotate slightly to the left and scale down */
+  }
+  75% {
+    transform: rotate(5deg) scale(1.05); /* Rotate back to the right and scale up */
+  }
+  100% {
+    transform: rotate(0deg) scale(1); /* Return to initial position and size */
+  }
+}
+
+.animate-rotate {
+  animation: smooth-rotate 0.5s ease; /* Duration for the rotation and scaling */
+}
+@keyframes blurFadeIn {
+  0% {
+    --tw-blur: blur(10px); /* Initial blur */
+    --tw-grayscale: grayscale(100%); /* Start as grayscale */
+    opacity: 0; /* Start invisible */
+  }
+  100% {
+    --tw-blur: blur(0); /* Clear */
+    --tw-grayscale: grayscale(0); /* Remove grayscale */
+    opacity: 1; /* Fully visible */
+  }
+}
+
+.initial-blur {
+  animation: blurFadeIn 0.7s ease-in-out forwards; /* Adjust duration and easing */
+}
+
+.image-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.image-container img {
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast)
+    var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate)
+    var(--tw-sepia) var(--tw-drop-shadow);
+  transition: filter 0.7s ease-in-out; /* Smooth transition for the filter effect */
+}
