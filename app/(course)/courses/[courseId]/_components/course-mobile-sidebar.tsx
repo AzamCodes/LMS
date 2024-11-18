@@ -1,5 +1,5 @@
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Course, UserProgress } from "@prisma/client";
+import { UserProgress } from "@prisma/client";
 import { Menu } from "lucide-react";
 import CourseSidebar from "./course-sidebar";
 
@@ -10,7 +10,7 @@ interface CourseMobileSidebarProps {
   progressCount: number;
 }
 
-const CouseMobileSidebar = ({
+const CourseMobileSidebar = ({
   course,
   progressCount,
 }: CourseMobileSidebarProps) => {
@@ -26,4 +26,4 @@ const CouseMobileSidebar = ({
   );
 };
 
-export default CouseMobileSidebar;
+export default CourseMobileSidebar;
