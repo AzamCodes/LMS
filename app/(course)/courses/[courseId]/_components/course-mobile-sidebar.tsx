@@ -1,5 +1,5 @@
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { UserProgress } from "@prisma/client";
+import { Course, UserProgress } from "@prisma/client";
 import { Menu } from "lucide-react";
 import CourseSidebar from "./course-sidebar";
 
