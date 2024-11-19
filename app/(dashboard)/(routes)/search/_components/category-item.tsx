@@ -22,7 +22,7 @@ const CategoryItem = ({ label, icon: Icon, value }: CategoryItemProps) => {
   const currentCategoryId = searchParams.get("categoryId");
   const currentTitle = searchParams.get("title");
 
-  const isSelected = currentCategoryId === value;
+  const isSelected = Number(currentCategoryId) === value;
   const onClick = () => {
     const url = qs.stringifyUrl(
       {
