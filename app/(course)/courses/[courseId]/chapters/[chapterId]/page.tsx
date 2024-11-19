@@ -58,7 +58,7 @@ const ChapterIdPage = async ({
         <div className="p-4">
           <VideoPlayer
             chapterId={params.chapterId}
-            title={params.title}
+            title={chapter.title}
             courseId={params.courseId}
             playbackId={muxData?.playbackId!}
             nextChapter={nextChapter?.playbackId!}
