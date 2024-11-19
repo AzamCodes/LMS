@@ -50,7 +50,7 @@ export const columns: ColumnDef<Course>[] = [
     },
     cell: ({ row }) => {
       const { price } = row.original;
-      return formatPrice(price);
+      return formatPrice(price ?? 0);
     },
   },
   {
