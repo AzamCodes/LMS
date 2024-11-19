@@ -1,5 +1,6 @@
 import { db } from "@/lib/db";
-import { Mux, Video } from "@mux/mux-node";
+import { Mux } from "@mux/mux-node";
+import Video from "@mux/mux-node";
 import { auth } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 
