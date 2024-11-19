@@ -89,9 +89,6 @@ const ChapterVideoForm = ({
                 onSubmit({ videoUrl: url });
               }
             }}
-            onError={(error) => {
-              toast.error("Upload failed. Please try again.");
-            }}
           />
           <div className="text-sm text-muted-foreground mt-4">
             Upload this chapter&apos;s video
