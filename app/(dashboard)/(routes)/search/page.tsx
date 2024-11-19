@@ -14,6 +14,10 @@ interface SearchPageProps {
 
 const SearchPage = async ({ searchParams }: SearchPageProps) => {
   const { userId } = auth();
+
+  // Ensure userId is a string, providing a default value if null
+  const safeUserId = userId || ""; // or handle it as needed
+
   const categories = await db.category.findMany({
     orderBy: {
       name: "asc",
@@ -21,7 +25,7 @@ const SearchPage = async ({ searchParams }: SearchPageProps) => {
   });
 
   const courses = await getCourses({
-    userId,
+    userId: safeUserId,
     ...searchParams,
   });
 
