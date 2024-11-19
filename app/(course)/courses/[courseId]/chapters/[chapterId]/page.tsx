@@ -38,7 +38,7 @@ const ChapterIdPage = async ({
   }
 
   const isLocked = !chapter.isFree && !purchase;
-  const completeOnEnd = !!purchase && !userProgress?.isComplete;
+  const completeOnEnd = !!purchase && !userProgress?.isCompleted;
 
   return (
     <div>
