@@ -46,7 +46,7 @@ export async function DELETE(
       });
 
       if (existingMuxData) {
-        await Video.assets.delete(existingMuxData.assetId);
+        await Video.Assets.del(existingMuxData.assetId);
         await db.muxData.delete({
           where: {
             id: existingMuxData.id,
