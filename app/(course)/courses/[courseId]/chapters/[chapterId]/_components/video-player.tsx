@@ -15,7 +15,7 @@ interface VideoPlayerProps {
   chapterId: string;
   nextChapterId?: string;
   isLocked: boolean;
-  completedOnEnd: boolean;
+  completeOnEnd: boolean;
   title: string;
 }
 
@@ -25,7 +25,7 @@ export const VideoPlayer = ({
   courseId,
   chapterId,
   nextChapterId,
-  completedOnEnd,
+  completeOnEnd,
   title,
 }: VideoPlayerProps) => {
   const [isReady, setIsReady] = useState(false);
@@ -34,7 +34,7 @@ export const VideoPlayer = ({
 
   const onEnd = async () => {
     try {
-      if (completedOnEnd) {
+      if (completeOnEnd) {
         await axios.put(
           `/api/courses/${courseId}/chapters/${chapterId}/progress`,
           { isCompleted: true }
