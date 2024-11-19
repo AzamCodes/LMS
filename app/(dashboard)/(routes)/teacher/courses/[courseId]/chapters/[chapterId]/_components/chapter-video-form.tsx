@@ -1,7 +1,7 @@
 "use client";
 import { FileUpload } from "@/components/file-upload";
 import { Button } from "@/components/ui/button";
-import { Chapter } from "@prisma/client";
+import { Chapter, MuxData } from "@prisma/client";
 import MuxVideoPlayer from "@mux/mux-player-react";
 import axios from "axios";
 import { ImageIcon, PlusCircle, Video } from "lucide-react";
