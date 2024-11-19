@@ -40,7 +40,7 @@ const AttachmentForm = ({ initialData, courseId }: AttachmentFormProps) => {
     }
   };
 
-  const onDelete = async (id: String) => {
+  const onDelete = async (id: string) => {
     try {
       setDeletingId(id);
       await axios.delete(`/api/courses/${courseId}/attachments/${id}`);
