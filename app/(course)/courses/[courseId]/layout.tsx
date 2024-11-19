@@ -1,9 +1,9 @@
 import { getProgress } from "@/actions/get-progress";
 import { auth } from "@clerk/nextjs/server";
-import { redirect } from "next/dist/server/api-utils";
 import CourseSidebar from "./_components/course-sidebar";
 import CourseNavbar from "./_components/course-navbar";
 import { db } from "@/lib/db";
+import { redirect } from "next/navigation";
 
 const CourseLayout = async ({
   children,
