@@ -11,7 +11,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Course } from "@prisma/client";
+import { Course, Chapter } from "@prisma/client";
 import axios from "axios";
 import { Loader2, Pencil, PlusCircle } from "lucide-react";
 import { useRouter } from "next/navigation";
@@ -22,7 +22,7 @@ import { z } from "zod";
 import { ChaptersList } from "./chapters-list";
 
 interface ChaptersFormProps {
-  initialData: Course;
+  initialData: Course & { chapters: Chapter[] };
   courseId: string;
 }
 
