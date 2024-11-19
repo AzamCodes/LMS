@@ -10,8 +10,9 @@ import {
   Draggable,
   DropResult,
 } from "@hello-pangea/dnd";
+import { Chapter } from "@prisma/client";
 interface ChaptersListProps {
-  items: chapter[];
+  items: Chapter[];
   onReorder: (updateData: { id: string; position: number }[]) => void;
   onEdit: (id: string) => void;
 }
