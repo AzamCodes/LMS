@@ -8,6 +8,8 @@ const muxClient = new Mux({
   tokenSecret: process.env.MUX_TOKEN_SECRET,
 });
 
+const { Video } = muxClient;
+
 export async function DELETE(
   req: Request,
   { params }: { params: { courseId: string; chapterId: string } }
