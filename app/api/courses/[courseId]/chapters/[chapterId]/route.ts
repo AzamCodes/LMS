@@ -1,5 +1,5 @@
 import { db } from "@/lib/db";
-import Mux from "@mux/mux-node";
+import { Mux, Video } from "@mux/mux-node";
 import { auth } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 
@@ -7,8 +7,6 @@ const muxClient = new Mux({
   tokenId: process.env.MUX_TOKEN_ID,
   tokenSecret: process.env.MUX_TOKEN_SECRET,
 });
-
-const { Video } = muxClient;
 
 export async function DELETE(
   req: Request,
