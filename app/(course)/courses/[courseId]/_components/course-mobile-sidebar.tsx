@@ -5,10 +5,9 @@ import CourseSidebar from "./course-sidebar";
 
 interface CourseMobileSidebarProps {
   course: Course & {
-    chapters: Chapter &
-      {
-        userProgress: UserProgress[] | null;
-      }[];
+    chapters: (Chapter & {
+      userProgress: UserProgress[] | null; // Ensure userProgress is included
+    })[]; // Ensure chapters is an array
   };
   progressCount: number;
 }
