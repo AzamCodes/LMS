@@ -6,7 +6,7 @@ import { usePathname, useRouter } from "next/navigation";
 interface CourseSidebarItemProps {
   label: string;
   id: string;
-  isCompleted: string;
+  isCompleted: boolean;
   courseId: string;
   isLocked: boolean;
 }
