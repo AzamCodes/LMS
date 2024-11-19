@@ -1,11 +1,13 @@
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Course, UserProgress } from "@prisma/client";
+import { Chapter, Course, UserProgress } from "@prisma/client";
 import { Menu } from "lucide-react";
 import CourseSidebar from "./course-sidebar";
 
 interface CourseMobileSidebarProps {
   course: Course & {
-    userProgress: UserProgress[] | null;
+    chapters: Chapter & {
+      userProgress: UserProgress[] | null;
+    };
   };
   progressCount: number;
 }
