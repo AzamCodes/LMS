@@ -14,9 +14,9 @@ import { z } from "zod";
 interface ChapterVideoFormProps {
   initialData: Chapter & {
     muxData?: MuxData | null;
-    chapterId: string;
-    courseId: string;
   };
+  chapterId: string;
+  courseId: string;
 }
 
 const formSchema = z.object({
@@ -25,8 +25,8 @@ const formSchema = z.object({
 
 const ChapterVideoForm = ({
   initialData,
-  courseId,
   chapterId,
+  courseId,
 }: ChapterVideoFormProps) => {
   const [isEditing, setIsEditing] = useState(false);
   const router = useRouter();
