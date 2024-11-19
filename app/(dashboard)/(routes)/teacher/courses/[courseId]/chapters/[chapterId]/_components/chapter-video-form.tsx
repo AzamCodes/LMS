@@ -15,6 +15,7 @@ interface ChapterVideoFormProps {
   initialData: Chapter & {
     muxData?: MuxData | null;
     chapterId: string;
+    courseId: string;
   };
 }
 
