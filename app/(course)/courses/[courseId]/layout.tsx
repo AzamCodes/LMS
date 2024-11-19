@@ -27,7 +27,14 @@ const CourseLayout = async ({
           isPublished: true,
         },
         include: {
-          userProgress: true,
+          userProgress: {
+            where: {
+              userId,
+            },
+          },
+        },
+        orderBy: {
+          position: "asc",
         },
       },
     },
