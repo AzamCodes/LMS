@@ -17,7 +17,9 @@ export async function POST(req: Request) {
     );
   } catch (error) {
     console.error("Error constructing event:", error);
-    return new NextResponse(`Webhook Error: ${error.message}`, { status: 400 });
+    return new NextResponse(`Webhook Error: ${(error as Error).message}`, {
+      status: 400,
+    });
   }
 
   console.log("Received event:", event);

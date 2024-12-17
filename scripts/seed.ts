@@ -9,12 +9,14 @@ async function main() {
     await database.category.createMany({
       data: [
         { name: "Computer Science" },
+        { name: "Communication Skills" },
         { name: "Music" },
         { name: "Fitness" },
         { name: "Photography" },
         { name: "Accounting" },
         { name: "Engineering" },
       ],
+      skipDuplicates: true,
     });
     console.log("Success");
   } catch (error) {

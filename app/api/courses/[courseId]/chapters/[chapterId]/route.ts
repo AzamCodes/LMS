@@ -2,12 +2,22 @@ import { db } from "@/lib/db";
 import { Mux } from "@mux/mux-node";
 import { auth } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
+import { Video } from "@mux/mux-node/resources/index.mjs";
 
-const { Video } = new Mux({
+// Ensure environment variables are defined before initializing Mux
+if (!process.env.MUX_TOKEN_ID || !process.env.MUX_TOKEN_SECRET) {
+  throw new Error("MUX_TOKEN_ID and MUX_TOKEN_SECRET must be defined");
+}
+
+const { video } = new Mux({
   tokenId: process.env.MUX_TOKEN_ID!,
   tokenSecret: process.env.MUX_TOKEN_SECRET!,
 });
 
+if (!video || !video.assets) {
+  console.error("[MUX_VIDEO_ERROR] Video or Assets is undefined");
+  throw new Error("Internal Error");
+}
 export async function PATCH(
   req: Request,
   { params }: { params: { courseId: string; chapterId: string } }
@@ -15,6 +25,8 @@ export async function PATCH(
   try {
     const { userId } = auth();
     const { isPublished, ...values } = await req.json();
+
+    console.log("Incoming PATCH request data:", { userId, values });
 
     if (!userId) {
       return new NextResponse("Unauthorized", { status: 401 });
@@ -38,7 +50,7 @@ export async function PATCH(
 
       if (existingMuxData) {
         try {
-          await Video.Assets.del(existingMuxData.assetId);
+          await video.assets.delete(existingMuxData.assetId);
         } catch (error) {
           console.log("[MUX_ASSET_DELETE_ERROR]", error);
         }
@@ -49,7 +61,7 @@ export async function PATCH(
         });
       }
 
-      const asset = await video.Assets.create({
+      const asset = await video.assets.create({
         input: values.videoUrl,
         playback_policy: ["public"],
         test: false,
@@ -119,7 +131,7 @@ export async function DELETE(
       });
 
       if (existingMuxData) {
-        await video.Assets.del(existingMuxData.assetId);
+        await video.assets.delete(existingMuxData.assetId);
         await db.muxData.delete({
           where: {
             id: existingMuxData.id,

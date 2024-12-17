@@ -105,4 +105,7 @@ const ChapterVideoForm = ({
   );
 };
 
+console.log("MUX_TOKEN_ID:", process.env.MUX_TOKEN_ID);
+console.log("MUX_TOKEN_SECRET:", process.env.MUX_TOKEN_SECRET);
+
 export default ChapterVideoForm;
