@@ -2,16 +2,16 @@
 
 import { cn } from "@/lib/utils";
 import { Category } from "@prisma/client";
-import { on } from "events";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { IconType } from "react-icons";
 import qs from "query-string";
+import { title } from "process";
 
 interface CategoryItemProps {
-  label: string;
-  icon: IconType;
-  value: number;
+  label?: string;
+  icon?: IconType;
+  value?: string;
 }
 
 const CategoryItem = ({ label, icon: Icon, value }: CategoryItemProps) => {
@@ -19,10 +19,11 @@ const CategoryItem = ({ label, icon: Icon, value }: CategoryItemProps) => {
   const router = useRouter();
 
   const searchParams = useSearchParams();
-  const currentCategoryId = searchParams.get("categoryId");
+  const currentCategoryId = searchParams.get("categoryId") || null; // Convert to number or null
   const currentTitle = searchParams.get("title");
 
-  const isSelected = Number(currentCategoryId) === value;
+  const isSelected = currentCategoryId === value;
+
   const onClick = () => {
     const url = qs.stringifyUrl(
       {
@@ -34,6 +35,7 @@ const CategoryItem = ({ label, icon: Icon, value }: CategoryItemProps) => {
       },
       { skipNull: true, skipEmptyString: true }
     );
+
     router.push(url);
   };
 

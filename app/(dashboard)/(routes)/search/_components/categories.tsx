@@ -18,13 +18,13 @@ interface CategoriesProps {
 }
 
 const iconMap: Record<Category["name"], IconType> = {
-  Music: FcMusic as IconType,
-  Photography: FcOldTimeCamera as IconType,
-  Fitness: FcSportsMode as IconType,
-  Accounting: FcSalesPerformance as IconType,
-  "Computer Science": FcMultipleDevices as IconType,
-  Engineering: FcEngineering as IconType,
-  Filming: FcFilmReel as IconType,
+  Music: FcMusic,
+  Photography: FcOldTimeCamera,
+  Fitness: FcSportsMode,
+  Accounting: FcSalesPerformance,
+  "Computer Science": FcMultipleDevices,
+  Engineering: FcEngineering,
+  Filming: FcFilmReel,
 };
 
 const Categories = ({ items }: CategoriesProps) => {
@@ -34,8 +34,8 @@ const Categories = ({ items }: CategoriesProps) => {
         <CategoryItem
           key={item.id}
           label={item.name}
-          icon={iconMap[item.name]}
-          value={Number(item.id)}
+          icon={iconMap[item.name as keyof typeof iconMap]}
+          value={item.id} // Fix here (use item.id)
         />
       ))}
     </div>
