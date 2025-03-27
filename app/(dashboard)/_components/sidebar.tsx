@@ -15,7 +15,7 @@ const SideBar = () => {
       <div className="flex-grow" />
       <div className="flex justify-center mb-4">
         <span className="text-gray-500 text-sm font-semibold">
-          LMS &copy;2024 | Built by Azam
+          LMS &copy;2024 | Built by Shivam
         </span>
       </div>
     </div>
